@@ -21,7 +21,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val car = Car()
+        val engine = Engine()
+        val carBrand = BMW()
+
+        val car = Car(engine, carBrand)
         car.startCar()
         car.printCarBrand()
         car.flashLight()
@@ -33,10 +36,7 @@ class MainActivity : AppCompatActivity() {
 
 private const val TAG = "Demo"
 
-class Car {
-
-    var engine = Engine()
-    var carBrand = BMW()
+class Car(private val engine: Engine, private val carBrand: CarBrand) {
 
     fun printCarBrand() {
         Log.d(TAG, carBrand.getCarBrand())
