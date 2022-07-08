@@ -20,6 +20,52 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val car = Car()
+        car.startCar()
+        car.printCarBrand()
+        car.flashLight()
     }
-    
+
+
+}
+
+
+private const val TAG = "Demo"
+
+class Car {
+
+    var engine = Engine()
+    var carBrand = BMW()
+
+    fun printCarBrand() {
+        Log.d(TAG, carBrand.getCarBrand())
+    }
+    fun startCar() {
+        Log.d(TAG, engine.start())
+        Log.d(TAG, "start Car")
+    }
+
+    fun flashLight() {
+        Log.d(TAG, "flash Light")
+    }
+
+}
+
+class Engine {
+
+    fun start(): String {
+        return "Starting Engine"
+    }
+}
+
+class BMW: CarBrand {
+    override fun getCarBrand(): String {
+      return "BMW M2"
+    }
+
+}
+
+interface CarBrand {
+    fun getCarBrand(): String
 }
